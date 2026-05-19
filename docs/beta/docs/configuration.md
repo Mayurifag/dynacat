@@ -1546,13 +1546,9 @@ Example:
 >       - /var/run/docker.sock:/var/run/docker.sock
 > ```
 
-#### Features
+Preview:
 
-- **Container Management**: Start, stop, restart, or remove containers with a single click
-- **Image Management**: Pull images and remove unused images directly from the dashboard
-- **State Visualization**: Visual indicators show container and image status (running, stopped, error, etc.)
-- **Responsive Design**: Action buttons appear on hover; two-click confirmation for destructive actions
-- **Filtering**: Display containers only, images only, or both
+![](images/docker-controller-preview.png)
 
 #### Properties
 
