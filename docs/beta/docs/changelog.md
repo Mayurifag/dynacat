@@ -18,6 +18,7 @@
 - Made Github fetches faster -> https://github.com/Panonim/dynacat/pull/97
 - Fixed issue with incorrect PKCE handling in OIDC
 - Made RSS feed render faster -> https://github.com/Panonim/dynacat/pull/99
+- Made key-bindings work with other keyboard layouts -> https://github.com/Panonim/dynacat/pull/99
 
 # Changes for 2.2.3
 - Add utility functions for array manipulation -> https://github.com/Panonim/dynacat/pull/60
