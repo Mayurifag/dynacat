@@ -1,3 +1,6 @@
+# Changes for 2.X.X
+- Added support for loading environment variables from a file via `--env-file`.
+
 # Changes for 2.3.0
 - Removed photos from latest-media widget
 - Fixed issue where latest-media widget wasn't receiving the correct thumbnail type from Plex
