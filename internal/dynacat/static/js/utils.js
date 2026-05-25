@@ -37,6 +37,22 @@ export function openURLInNewTab(url, focus = true) {
     if (focus && newWindow != null) newWindow.focus();
 }
 
+export function escapeHtml(str) {
+    return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+}
+
+export function widgetActionURL(baseURL, widgetId, ...parts) {
+    return `${baseURL}/api/widgets/${encodeURIComponent(widgetId)}/action/${parts.map((part) => encodeURIComponent(part)).join('/')}`;
+}
+
+export function widgetById(widgetId, root = document) {
+    return root.querySelector(`.widget[data-widget-id="${widgetId}"]`);
+}
+
 
 export class Vec2 {
     constructor(x, y) {

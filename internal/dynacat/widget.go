@@ -88,6 +88,8 @@ func newWidget(widgetType string) (widget, error) {
 		w = &serverStatsWidget{}
 	case "to-do":
 		w = &todoWidget{}
+	case "ticktick":
+		w = &ticktickWidget{}
 	case "playing":
 		w = &playingWidget{}
 	case "latest-media":

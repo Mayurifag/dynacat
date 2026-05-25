@@ -1,0 +1,198 @@
+.ticktick-config-helper-card {
+  display: grid;
+  gap: 12px;
+  margin: 16px 0 22px;
+}
+
+.ticktick-config-helper-card [hidden] {
+  display: none !important;
+}
+
+.ticktick-rail {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-faint);
+  font-size: 11.5px;
+  font-weight: 600;
+}
+
+.ticktick-rail-item.active,
+.ticktick-rail-item.complete {
+  color: var(--accent);
+}
+
+.ticktick-rail-line {
+  height: 1px;
+  flex: 1;
+  background: var(--border-subtle);
+}
+
+.ticktick-step {
+  display: grid;
+  gap: 10px;
+  padding: 12px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+}
+
+.ticktick-step-head {
+  display: flex;
+  gap: 10px;
+}
+
+.ticktick-step-number {
+  display: inline-grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  color: var(--accent);
+  background: var(--accent-dim);
+  border: 1px solid var(--accent-border);
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  flex: 0 0 auto;
+}
+
+.ticktick-step-title {
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 650;
+}
+
+.ticktick-step-copy,
+.ticktick-project-status {
+  color: var(--text-faint);
+  font-size: 12.5px;
+}
+
+.ticktick-setup-note {
+  display: grid;
+  gap: 6px;
+  padding: 10px 11px;
+  color: var(--text-muted);
+  background: var(--bg);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius);
+  font-size: 12.5px;
+  line-height: 1.45;
+}
+
+.ticktick-setup-note a {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.ticktick-redirect-inline {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  max-width: 100%;
+  vertical-align: middle;
+}
+
+.ticktick-setup-note code {
+  display: inline-block;
+  max-width: min(100%, 44rem);
+  padding: 2px 5px;
+  overflow-wrap: anywhere;
+  user-select: all;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 5px;
+  font-family: 'Oxygen Mono', 'SFMono-Regular', 'Segoe UI Mono', monospace;
+  font-size: 12px;
+}
+
+.ticktick-inline-copy {
+  flex: 0 0 auto;
+}
+
+.ticktick-helper-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.ticktick-helper-wide {
+  grid-column: 1 / -1;
+}
+
+.ticktick-config-helper-card label,
+.ticktick-helper-label {
+  display: grid;
+  gap: 5px;
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 12.5px;
+  font-weight: 600;
+}
+
+.ticktick-config-helper-card input,
+.ticktick-config-helper-card select {
+  width: 100%;
+  min-height: 32px;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 6px 9px;
+  font: inherit;
+  font-size: 13px;
+}
+
+.ticktick-helper-note {
+  color: var(--text-faint);
+  font-size: 11.5px;
+  line-height: 1.45;
+}
+
+.ticktick-config-helper-button {
+  display: inline-flex;
+  justify-content: center;
+  padding: 6px 11px;
+  color: #fff !important;
+  background: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none !important;
+}
+
+.ticktick-config-helper-button.disabled,
+.ticktick-config-helper-button:disabled {
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+.ticktick-output-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+}
+
+.ticktick-output-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.ticktick-config-helper-status {
+  min-height: 19px;
+  color: var(--text-muted);
+  font-size: 12.5px;
+}
+
+.ticktick-config-helper-status.error { color: #F87171; }
+.ticktick-config-helper-status.success { color: #4ADE80; }
+
+@media (max-width: 720px) {
+  .ticktick-helper-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,7 +1,8 @@
 import { setupPopovers } from './popover.js';
 import { setupMasonries } from './masonry.js';
-import { throttledDebounce, isElementVisible, openURLInNewTab } from './utils.js';
+import { throttledDebounce, isElementVisible, openURLInNewTab, widgetById } from './utils.js';
 import { elem, find, findAll } from './templating.js';
+import { setupFrontendWidgetSync } from './widget-sync.js';
 
 async function fetchPageContent(pageData) {
     // TODO: handle non 200 status codes/time outs
@@ -1148,21 +1149,6 @@ async function setupTodos() {
     }
 }
 
-function setupFrontendWidgetSync() {
-    const widgets = document.querySelectorAll(".widget[data-widget-frontend-sync-key]");
-    const keyCounts = {};
-
-    for (let i = 0; i < widgets.length; i++) {
-        const key = widgets[i].dataset.widgetFrontendSyncKey;
-        keyCounts[key] = (keyCounts[key] || 0) + 1;
-    }
-
-    for (let i = 0; i < widgets.length; i++) {
-        const key = widgets[i].dataset.widgetFrontendSyncKey;
-        if (keyCounts[key] < 2) widgets[i].removeAttribute("data-widget-frontend-sync-key");
-    }
-}
-
 async function setupStopwatches() {
     const elems = document.getElementsByClassName("stopwatch");
     if (elems.length == 0) return;
@@ -1171,6 +1157,14 @@ async function setupStopwatches() {
 
     for (let i = 0; i < elems.length; i++)
         stopwatch.default(elems[i]);
+}
+
+async function setupTickTickWidgets() {
+    const elems = document.getElementsByClassName("widget-type-ticktick");
+    if (elems.length == 0) return;
+
+    const ticktick = await import('./ticktick.js');
+    ticktick.setupTickTick(pageData, _applyWidgetUpdate);
 }
 
 function setupTruncatedElementTitles() {
@@ -1348,6 +1342,7 @@ async function setupPage() {
 
     try {
         setupFrontendWidgetSync();
+        await setupTickTickWidgets();
         setupPopovers();
         setupClocks()
         await setupCalendars();
@@ -1406,7 +1401,7 @@ async function fetchWidgetContent(widgetElement) {
         const tempDiv = document.createElement("div");
         tempDiv.innerHTML = widgetHtml;
 
-        return tempDiv.querySelector(`.widget[data-widget-id="${widgetId}"]`);
+        return widgetById(widgetId, tempDiv);
     } catch (error) {
         console.error('Failed to fetch widget content:', error);
         return null;
@@ -2011,7 +2006,7 @@ function startPolling() {
 }
 
 window.dynacatRefreshWidget = async function(widgetId) {
-    const widget = document.querySelector(`.widget[data-widget-id="${widgetId}"]`);
+    const widget = widgetById(widgetId);
     if (widget) {
         await updateWidget(widget);
         return;
@@ -2029,8 +2024,10 @@ function _dynacatFetchAndApplyWidget(widgetId) {
 }
 
 function _applyWidgetUpdate(widgetId, html) {
-    const target = document.querySelector(`.widget[data-widget-id="${widgetId}"]`);
+    const target = widgetById(widgetId);
     if (!target) return;
+
+    html = _widgetUpdateHTMLForTarget(widgetId, html);
 
     const collapsibleContainerStates = getCollapsibleContainerStates(target);
     const groupTabStates = getGroupTabStates(target);
@@ -2041,7 +2038,7 @@ function _applyWidgetUpdate(widgetId, html) {
     try {
         Idiomorph.morph(target, html, { morphStyle: 'outerHTML' });
 
-        const liveTarget = document.querySelector(`.widget[data-widget-id="${widgetId}"]`);
+        const liveTarget = widgetById(widgetId);
         if (!liveTarget) return;
 
         setupCollapsibleLists();
@@ -2073,6 +2070,26 @@ function _applyWidgetUpdate(widgetId, html) {
     } finally {
         htmlElem.style.overflowAnchor = prevAnchor;
     }
+}
+
+function _widgetUpdateHTMLForTarget(widgetId, html) {
+    if (html.includes(`data-widget-id="${widgetId}"`)) return html;
+
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = html;
+
+    const widget = tempDiv.querySelector('.widget');
+    if (!widget) return html;
+
+    const sourceWidgetId = widget.dataset.widgetId;
+    if (!sourceWidgetId || sourceWidgetId === widgetId) return html;
+
+    widget.dataset.widgetId = widgetId;
+    widget.querySelectorAll('[data-widget-id]').forEach((element) => {
+        if (element.dataset.widgetId === sourceWidgetId) element.dataset.widgetId = widgetId;
+    });
+
+    return widget.outerHTML;
 }
 
 function _runPostSettleSetup() {

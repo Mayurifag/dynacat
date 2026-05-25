@@ -197,16 +197,16 @@ server:
 
 ### Properties
 
-| Name | Type | Required | Default |
-| ---- | ---- | -------- | ------- |
-| host | string | no |  |
-| port | number | no | 8080 |
-| proxied | boolean | no | false |
-| base-url | string | no | |
-| assets-path | string | no | /app/assets |
-| cache-dir | string | no | .cache |
-| db-path | string | no | /app/assets/dynacat.db |
-| allowed-embed-hosts | array of strings | no | |
+| Name                | Type             | Required | Default                |
+| ------------------- | ---------------- | -------- | ---------------------- |
+| host                | string           | no       |                        |
+| port                | number           | no       | 8080                   |
+| proxied             | boolean          | no       | false                  |
+| base-url            | string           | no       |                        |
+| assets-path         | string           | no       | /app/assets            |
+| cache-dir           | string           | no       | .cache                 |
+| db-path             | string           | no       | /app/assets/dynacat.db |
+| allowed-embed-hosts | array of strings | no       |                        |
 
 #### `host`
 The address which the server will listen on. Setting it to `localhost` means that only the machine that the server is running on will be able to access the dashboard. By default it will listen on all interfaces.
@@ -311,19 +311,19 @@ branding:
 
 ### Properties
 
-| Name | Type | Required | Default |
-| ---- | ---- | -------- | ------- |
-| hide-footer | bool | no | false |
-| hide-logo | bool | no | false |
-| custom-footer | string | no |  |
-| logo-text | string | no | G |
-| logo-url | string | no | |
-| favicon-url | string | no | |
-| app-name | string | no | Dynacat |
-| app-icon-url | string | no | Dynacat's default icon |
-| app-background-color | string | no | Dynacat's default background color |
-| show-desktop-navigation-on-hover | boolean | no | false |
-| center-desktop-navigation | boolean | no | false |
+| Name                             | Type    | Required | Default                            |
+| -------------------------------- | ------- | -------- | ---------------------------------- |
+| hide-footer                      | bool    | no       | false                              |
+| hide-logo                        | bool    | no       | false                              |
+| custom-footer                    | string  | no       |                                    |
+| logo-text                        | string  | no       | G                                  |
+| logo-url                         | string  | no       |                                    |
+| favicon-url                      | string  | no       |                                    |
+| app-name                         | string  | no       | Dynacat                            |
+| app-icon-url                     | string  | no       | Dynacat's default icon             |
+| app-background-color             | string  | no       | Dynacat's default background color |
+| show-desktop-navigation-on-hover | boolean | no       | false                              |
+| center-desktop-navigation        | boolean | no       | false                              |
 
 #### `hide-footer`
 Hides the footer when set to `true`.
@@ -389,18 +389,18 @@ theme:
 If you don't want to spend time configuring your own theme, there are [several available themes](themes.md) which you can simply copy the values for.
 
 ### Properties
-| Name | Type | Required | Default |
-| ---- | ---- | -------- | ------- |
-| light | boolean | no | false |
-| background-color | HSL | no | 240 8 9 |
-| primary-color | HSL | no | 43 50 70 |
-| positive-color | HSL | no | same as `primary-color` |
-| negative-color | HSL | no | 0 70 70 |
-| contrast-multiplier | number | no | 1 |
-| text-saturation-multiplier | number | no | 1 |
-| custom-css-file | string | no | |
-| disable-picker | bool | false | |
-| presets | object | no | |
+| Name                       | Type    | Required | Default                 |
+| -------------------------- | ------- | -------- | ----------------------- |
+| light                      | boolean | no       | false                   |
+| background-color           | HSL     | no       | 240 8 9                 |
+| primary-color              | HSL     | no       | 43 50 70                |
+| positive-color             | HSL     | no       | same as `primary-color` |
+| negative-color             | HSL     | no       | 0 70 70                 |
+| contrast-multiplier        | number  | no       | 1                       |
+| text-saturation-multiplier | number  | no       | 1                       |
+| custom-css-file            | string  | no       |                         |
+| disable-picker             | bool    | false    |                         |
+| presets                    | object  | no       |                         |
 
 #### `light`
 Whether the scheme is light or dark. This does not change the background color, it inverts the text colors so that they look appropriately on a light background.
@@ -494,20 +494,20 @@ pages:
 ```
 
 ### Properties
-| Name | Type | Required | Default |
-| ---- | ---- | -------- | ------- |
-| name | string | yes | |
-| slug | string | no | |
-| dynamic-updates | boolean | no | true |
-| width | string | no | |
-| desktop-navigation-width | string | no | |
-| center-vertically | boolean | no | false |
-| hide-desktop-navigation | boolean | no | false |
-| hide-from-navigation | boolean | no | false |
-| key-bind | string | no | |
-| show-mobile-header | boolean | no | false |
-| head-widgets | array | no | |
-| columns | array | yes | |
+| Name                     | Type    | Required | Default |
+| ------------------------ | ------- | -------- | ------- |
+| name                     | string  | yes      |         |
+| slug                     | string  | no       |         |
+| dynamic-updates          | boolean | no       | true    |
+| width                    | string  | no       |         |
+| desktop-navigation-width | string  | no       |         |
+| center-vertically        | boolean | no       | false   |
+| hide-desktop-navigation  | boolean | no       | false   |
+| hide-from-navigation     | boolean | no       | false   |
+| key-bind                 | string  | no       |         |
+| show-mobile-header       | boolean | no       | false   |
+| head-widgets             | array   | no       |         |
+| columns                  | array   | yes      |         |
 
 #### `name`
 The name of the page which gets shown in the navigation bar.
@@ -568,12 +568,12 @@ The shortcut is only active when:
 
 A keybind is one or more keys separated by spaces. Each key is a single letter or digit.
 
-| Config value | Behavior |
-| ------------ | -------- |
-| `h` | Automatically expanded to `d h` — press `d` then `h` |
-| `d h` | Press `d`, release, then press `h` within 1 second |
-| `d a c` | Three-key sequence: `d` → `a` → `c` |
-| `1` | Automatically expanded to `d 1` — press `d` then `1` |
+| Config value | Behavior                                             |
+| ------------ | ---------------------------------------------------- |
+| `h`          | Automatically expanded to `d h` — press `d` then `h` |
+| `d h`        | Press `d`, release, then press `h` within 1 second   |
+| `d a c`      | Three-key sequence: `d` → `a` → `c`                  |
+| `1`          | Automatically expanded to `d 1` — press `d` then `1` |
 
 > [!NOTE]
 >
@@ -656,10 +656,10 @@ pages:
 ```
 
 ### Properties
-| Name | Type | Required |
-| ---- | ---- | -------- |
-| size | string | yes |
-| widgets | array | no |
+| Name    | Type   | Required |
+| ------- | ------ | -------- |
+| size    | string | yes      |
+| widgets | array  | no       |
 
 Here are some of the possible column configurations:
 
@@ -742,37 +742,37 @@ Preview:
 
 #### Properties
 
-| Name | Type | Required |
-| ---- | ---- | -------- |
-| groups | array | yes |
+| Name   | Type  | Required |
+| ------ | ----- | -------- |
+| groups | array | yes      |
 
 ##### `groups`
 An array of groups which can optionally have a title and a custom color.
 
 ###### Properties for each group
-| Name | Type | Required | Default |
-| ---- | ---- | -------- | ------- |
-| title | string | no | |
-| color | HSL | no | the primary color of the theme |
-| links | array | yes | |
-| same-tab | boolean | no | false |
-| hide-arrow | boolean | no | false |
-| target | string | no | |
+| Name       | Type    | Required | Default                        |
+| ---------- | ------- | -------- | ------------------------------ |
+| title      | string  | no       |                                |
+| color      | HSL     | no       | the primary color of the theme |
+| links      | array   | yes      |                                |
+| same-tab   | boolean | no       | false                          |
+| hide-arrow | boolean | no       | false                          |
+| target     | string  | no       |                                |
 
 > [!TIP]
 >
 > You can set `same-tab`, `hide-arrow` and `target` either on the group which will apply them to all links in that group, or on each individual link which will override the value set on the group.
 
 ###### Properties for each link
-| Name | Type | Required | Default |
-| ---- | ---- | -------- | ------- |
-| title | string | yes | |
-| url | string | yes | |
-| description | string | no | |
-| icon | string | no | |
-| same-tab | boolean | no | false |
-| hide-arrow | boolean | no | false |
-| target | string | no | |
+| Name        | Type    | Required | Default |
+| ----------- | ------- | -------- | ------- |
+| title       | string  | yes      |         |
+| url         | string  | yes      |         |
+| description | string  | no       |         |
+| icon        | string  | no       |         |
+| same-tab    | boolean | no       | false   |
+| hide-arrow  | boolean | no       | false   |
+| target      | string  | no       |         |
 
 `icon`
 
@@ -806,9 +806,9 @@ Preview:
 
 #### Properties
 
-| Name | Type | Required | Default |
-| ---- | ---- | -------- | ------- |
-| first-day-of-week | string | no | monday |
+| Name              | Type   | Required | Default |
+| ----------------- | ------ | -------- | ------- |
+| first-day-of-week | string | no       | monday  |
 
 ##### `first-day-of-week`
 The day of the week that the calendar starts on. All week days are available as possible values.
@@ -830,14 +830,14 @@ Preview:
 
 #### Properties
 
-| Name | Type | Required | Default |
-| ---- | ---- | -------- | ------- |
-| instance-url | string | no | `https://www.changedetection.io` |
-| allow-insecure | boolean | no | false |
-| token | string | no |  |
-| limit | integer | no | 10 |
-| collapse-after | integer | no | 5 |
-| watches | array of strings | no |  |
+| Name           | Type             | Required | Default                          |
+| -------------- | ---------------- | -------- | -------------------------------- |
+| instance-url   | string           | no       | `https://www.changedetection.io` |
+| allow-insecure | boolean          | no       | false                            |
+| token          | string           | no       |                                  |
+| limit          | integer          | no       | 10                               |
+| collapse-after | integer          | no       | 5                                |
+| watches        | array of strings | no       |                                  |
 
 ##### `instance-url`
 The URL pointing to your instance of `changedetection.io`.
@@ -887,20 +887,20 @@ Preview:
 
 #### Properties
 
-| Name | Type | Required | Default |
-| ---- | ---- | -------- | ------- |
-| hour-format | string | no | 24h |
-| timezones | array | no |  |
+| Name        | Type   | Required | Default |
+| ----------- | ------ | -------- | ------- |
+| hour-format | string | no       | 24h     |
+| timezones   | array  | no       |         |
 
 ##### `hour-format`
 Whether to show the time in 12 or 24 hour format. Possible values are `12h` and `24h`.
 
 #### Properties for each timezone
 
-| Name | Type | Required | Default |
-| ---- | ---- | -------- | ------- |
-| timezone | string | yes | |
-| label | string | no | |
+| Name     | Type   | Required | Default |
+| -------- | ------ | -------- | ------- |
+| timezone | string | yes      |         |
+| label    | string | no       |         |
 
 ##### `timezone`
 A timezone identifier such as `Europe/London`, `America/New_York`, etc. The full list of available identifiers can be found [here](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
@@ -997,20 +997,20 @@ Examples:
 </details>
 
 #### Properties
-| Name | Type | Required | Default |
-| ---- | ---- | -------- | ------- |
-| url | string | no | |
-| headers | key (string) & value (string) | no | |
-| method | string | no | GET |
-| body-type | string | no | json |
-| body | any | no | |
-| frameless | boolean | no | false |
-| allow-insecure | boolean | no | false |
-| skip-json-validation | boolean | no | false |
-| template | string | yes | |
-| options | map | no | |
-| parameters | key (string) & value (string|array) | no | |
-| subrequests | map of requests | no | |
+| Name                 | Type                          | Required | Default |
+| -------------------- | ----------------------------- | -------- | ------- |
+| url                  | string                        | no       |         |
+| headers              | key (string) & value (string) | no       |         |
+| method               | string                        | no       | GET     |
+| body-type            | string                        | no       | json    |
+| body                 | any                           | no       |         |
+| frameless            | boolean                       | no       | false   |
+| allow-insecure       | boolean                       | no       | false   |
+| skip-json-validation | boolean                       | no       | false   |
+| template             | string                        | yes      |         |
+| options              | map                           | no       |         |
+| parameters           | key (string) & value (string  | array)   | no      |
+| subrequests          | map of requests               | no       |         |
 
 ##### `url`
 The URL to fetch the data from. It must be accessible from the server that Dynacat is running on.
@@ -1235,21 +1235,21 @@ Examples:
 </details>
 
 #### Properties
-| Name | Type | Required | Default |
-| ---- | ---- | -------- | ------- |
-| widget | string | yes | |
-| repo | string | no | main |
-| url | string | no | |
-| headers | key (string) & value (string) | no | |
-| method | string | no | GET |
-| body-type | string | no | json |
-| body | any | no | |
-| frameless | boolean | no | false |
-| allow-insecure | boolean | no | false |
-| skip-json-validation | boolean | no | false |
-| options | map | no | |
-| parameters | key (string) & value (string|array) | no | |
-| subrequests | map of requests | no | |
+| Name                 | Type                          | Required | Default |
+| -------------------- | ----------------------------- | -------- | ------- |
+| widget               | string                        | yes      |         |
+| repo                 | string                        | no       | main    |
+| url                  | string                        | no       |         |
+| headers              | key (string) & value (string) | no       |         |
+| method               | string                        | no       | GET     |
+| body-type            | string                        | no       | json    |
+| body                 | any                           | no       |         |
+| frameless            | boolean                       | no       | false   |
+| allow-insecure       | boolean                       | no       | false   |
+| skip-json-validation | boolean                       | no       | false   |
+| options              | map                           | no       |         |
+| parameters           | key (string) & value (string  | array)   | no      |
+| subrequests          | map of requests               | no       |         |
 
 ##### `widget`
 The slug of the widget from the dynawidgets repository. This is the only required property. The widget template will be automatically fetched and cached to `/app/assets/dynawidgets/{widget}.txt`. Example:
@@ -1299,17 +1299,17 @@ Preview:
 
 #### Properties
 
-| Name | Type | Required | Default |
-| ---- | ---- | -------- | ------- |
-| service | string | no | pihole |
-| allow-insecure | bool | no | false |
-| url | string | yes |  |
-| username | string | when service is `adguard` |  |
-| password | string | when service is `adguard` or `pihole-v6` |  |
-| token | string | when service is `pihole` |  |
-| hide-graph | bool | no | false |
-| hide-top-domains | bool | no | false |
-| hour-format | string | no | 12h |
+| Name             | Type   | Required                                 | Default |
+| ---------------- | ------ | ---------------------------------------- | ------- |
+| service          | string | no                                       | pihole  |
+| allow-insecure   | bool   | no                                       | false   |
+| url              | string | yes                                      |         |
+| username         | string | when service is `adguard`                |         |
+| password         | string | when service is `adguard` or `pihole-v6` |         |
+| token            | string | when service is `pihole`                 |         |
+| hide-graph       | bool   | no                                       | false   |
+| hide-top-domains | bool   | no                                       | false   |
+| hour-format      | string | no                                       | 12h     |
 
 ##### `service`
 Either `adguard`, `technitium`, or `pihole` (major version 5 and below) or `pihole-v6` (major version 6 and above).
@@ -1438,14 +1438,14 @@ If any of the child containers are down, their status will propagate up to the p
 
 #### Properties
 
-| Name | Type | Required | Default |
-| ---- | ---- | -------- | ------- |
-| hide-by-default | boolean | no | false |
-| format-container-names | boolean | no | false |
-| sock-path | string | no | /var/run/docker.sock |
-| category | string | no | |
-| running-only | boolean | no | false |
-| update-interval | string | no | 2m |
+| Name                   | Type    | Required | Default              |
+| ---------------------- | ------- | -------- | -------------------- |
+| hide-by-default        | boolean | no       | false                |
+| format-container-names | boolean | no       | false                |
+| sock-path              | string  | no       | /var/run/docker.sock |
+| category               | string  | no       |                      |
+| running-only           | boolean | no       | false                |
+| update-interval        | string  | no       | 2m                   |
 
 ##### `hide-by-default`
 Whether to hide the containers by default. If set to `true` you'll have to manually add a `dynacat.hide: false` label to each container you want to display. By default all containers will be shown and if you want to hide a specific container you can add a `dynacat.hide: true` label.
@@ -1509,17 +1509,17 @@ Then you can use the `category` property to filter the containers:
 Whether to only show running containers. If set to `true` only containers that are currently running will be displayed. If set to `false` all containers will be displayed regardless of their state.
 
 #### Labels
-| Name | Description |
-| ---- | ----------- |
-| dynacat.name | The name displayed in the UI. If not specified, the name of the container will be used. |
-| dynacat.icon | See [Icons](#icons) for more information on how to specify icons |
-| dynacat.url | The URL that the user will be redirected to when clicking on the container. |
-| dynacat.same-tab | Whether to open the link in the same or a new tab. Default is `false`. |
-| dynacat.description | A short description displayed in the UI. Default is empty. |
-| dynacat.hide | Whether to hide the container. If set to `true` the container will not be displayed. Defaults to `false`. |
-| dynacat.id | The custom ID of the container. Used to group containers under a single parent. |
-| dynacat.parent | The ID of the parent container. Used to group containers under a single parent. |
-| dynacat.category | The category of the container. Used to filter containers by category. |
+| Name                | Description                                                                                               |
+| ------------------- | --------------------------------------------------------------------------------------------------------- |
+| dynacat.name        | The name displayed in the UI. If not specified, the name of the container will be used.                   |
+| dynacat.icon        | See [Icons](#icons) for more information on how to specify icons                                          |
+| dynacat.url         | The URL that the user will be redirected to when clicking on the container.                               |
+| dynacat.same-tab    | Whether to open the link in the same or a new tab. Default is `false`.                                    |
+| dynacat.description | A short description displayed in the UI. Default is empty.                                                |
+| dynacat.hide        | Whether to hide the container. If set to `true` the container will not be displayed. Defaults to `false`. |
+| dynacat.id          | The custom ID of the container. Used to group containers under a single parent.                           |
+| dynacat.parent      | The ID of the parent container. Used to group containers under a single parent.                           |
+| dynacat.category    | The category of the container. Used to filter containers by category.                                     |
 
 ### Docker Controller
 
@@ -1552,13 +1552,13 @@ Preview:
 
 #### Properties
 
-| Name | Type | Required | Default |
-| ---- | ---- | -------- | ------- |
-| show | string | no | both |
-| sock-path | string | no | /var/run/docker.sock |
-| format-container-names | boolean | no | false |
-| collapse-after | integer | no | 4 |
-| update-interval | string | no | 15s |
+| Name                   | Type    | Required | Default              |
+| ---------------------- | ------- | -------- | -------------------- |
+| show                   | string  | no       | both                 |
+| sock-path              | string  | no       | /var/run/docker.sock |
+| format-container-names | boolean | no       | false                |
+| collapse-after         | integer | no       | 4                    |
+| update-interval        | string  | no       | 15s                  |
 
 ##### `show`
 Controls what to display in the widget. Possible values are:
@@ -1602,13 +1602,13 @@ Display a widget provided by an external source (3rd party). If you want to lear
 ```
 
 #### Properties
-| Name | Type | Required | Default |
-| ---- | ---- | -------- | ------- |
-| url | string | yes | |
-| fallback-content-type | string | no | |
-| allow-potentially-dangerous-html | boolean | no | false |
-| headers | key & value | no | |
-| parameters | key & value | no | |
+| Name                             | Type        | Required | Default |
+| -------------------------------- | ----------- | -------- | ------- |
+| url                              | string      | yes      |         |
+| fallback-content-type            | string      | no       |         |
+| allow-potentially-dangerous-html | boolean     | no       | false   |
+| headers                          | key & value | no       |         |
+| parameters                       | key & value | no       |         |
 
 ##### `url`
 The URL of the extension. **Note that the query gets stripped from this URL and the one defined by `parameters` gets used instead.**
@@ -1693,13 +1693,13 @@ Preview:
 ![](images/hacker-news-widget-preview.png)
 
 #### Properties
-| Name | Type | Required | Default |
-| ---- | ---- | -------- | ------- |
-| limit | integer | no | 15 |
-| collapse-after | integer | no | 5 |
-| comments-url-template | string | no | https://news.ycombinator.com/item?id={POST-ID} |
-| sort-by | string | no | top |
-| extra-sort-by | string | no | |
+| Name                  | Type    | Required | Default                                        |
+| --------------------- | ------- | -------- | ---------------------------------------------- |
+| limit                 | integer | no       | 15                                             |
+| collapse-after        | integer | no       | 5                                              |
+| comments-url-template | string  | no       | https://news.ycombinator.com/item?id={POST-ID} |
+| sort-by               | string  | no       | top                                            |
+| extra-sort-by         | string  | no       |                                                |
 
 ##### `comments-url-template`
 Used to replace the default link for post comments. Useful if you want to use an alternative front-end. Example:
@@ -1745,10 +1745,10 @@ Example:
 ```
 
 #### Properties
-| Name | Type | Required | Default |
-| ---- | ---- | -------- | ------- |
-| source | string | yes | |
-| height | integer | no | 300 |
+| Name   | Type    | Required | Default |
+| ------ | ------- | -------- | ------- |
+| source | string  | yes      |         |
+| height | integer | no       | 300     |
 
 ##### `source`
 The source of the iframe.
@@ -1776,14 +1776,14 @@ Preview:
 ![](images/lobsters-widget-preview.png)
 
 #### Properties
-| Name | Type | Required | Default |
-| ---- | ---- | -------- | ------- |
-| instance-url | string | no | https://lobste.rs/ |
-| custom-url | string | no | |
-| limit | integer | no | 15 |
-| collapse-after | integer | no | 5 |
-| sort-by | string | no | hot |
-| tags | array | no | |
+| Name           | Type    | Required | Default            |
+| -------------- | ------- | -------- | ------------------ |
+| instance-url   | string  | no       | https://lobste.rs/ |
+| custom-url     | string  | no       |                    |
+| limit          | integer | no       | 15                 |
+| collapse-after | integer | no       | 5                  |
+| sort-by        | string  | no       | hot                |
+| tags           | array   | no       |                    |
 
 ##### `instance-url`
 The base URL for a lobsters instance hosted somewhere other than on lobste.rs. Example:
@@ -1833,12 +1833,12 @@ Preview:
 
 #### Properties
 
-| Name | Type | Required |
-| ---- | ---- | -------- |
-| markets | array | yes |
-| sort-by | string | no |
-| chart-link-template | string | no |
-| symbol-link-template | string | no |
+| Name                 | Type   | Required |
+| -------------------- | ------ | -------- |
+| markets              | array  | yes      |
+| sort-by              | string | no       |
+| chart-link-template  | string | no       |
+| symbol-link-template | string | no       |
 
 ##### `markets`
 An array of markets for which to display information about.
@@ -1861,13 +1861,13 @@ symbol-link-template: https://www.google.com/search?tbm=nws&q={SYMBOL}
 ```
 
 ###### Properties for each market
-| Name | Type | Required |
-| ---- | ---- | -------- |
-| symbol | string | yes |
-| name | string | no |
-| symbol-link | string | no |
-| chart-link | string | no |
-| invert-colors | boolean | no |
+| Name          | Type    | Required |
+| ------------- | ------- | -------- |
+| symbol        | string  | yes      |
+| name          | string  | no       |
+| symbol-link   | string  | no       |
+| chart-link    | string  | no       |
+| invert-colors | boolean | no       |
 
 `symbol`
 
@@ -1925,12 +1925,12 @@ You can hover over the "ERROR" text to view more information.
 
 #### Properties
 
-| Name | Type | Required | Default |
-| ---- | ---- | -------- | ------- |
-| sites | array | yes | |
-| style | string | no | |
-| show-failing-only | boolean | no | false |
-| update-interval | string | no | 2m |
+| Name              | Type    | Required | Default |
+| ----------------- | ------- | -------- | ------- |
+| sites             | array   | yes      |         |
+| style             | string  | no       |         |
+| show-failing-only | boolean | no       | false   |
+| update-interval   | string  | no       | 2m      |
 
 ##### `show-failing-only`
 Shows only a list of failing sites when set to `true`.
@@ -1946,20 +1946,20 @@ Preview of `compact`:
 
 Properties for each site:
 
-| Name | Type | Required | Default |
-| ---- | ---- | -------- | ------- |
-| title | string | yes | |
-| url | string | yes | |
-| description | string | no | |
-| check-url | string | no | |
-| error-url | string | no | |
-| method | string | no | GET |
-| icon | string | no | |
-| timeout | string | no | 3s |
-| allow-insecure | boolean | no | false |
-| same-tab | boolean | no | false |
-| alt-status-codes | array | no | |
-| basic-auth | object | no | |
+| Name             | Type    | Required | Default |
+| ---------------- | ------- | -------- | ------- |
+| title            | string  | yes      |         |
+| url              | string  | yes      |         |
+| description      | string  | no       |         |
+| check-url        | string  | no       |         |
+| error-url        | string  | no       |         |
+| method           | string  | no       | GET     |
+| icon             | string  | no       |         |
+| timeout          | string  | no       | 3s      |
+| allow-insecure   | boolean | no       | false   |
+| same-tab         | boolean | no       | false   |
+| alt-status-codes | array   | no       |         |
+| basic-auth       | object  | no       |         |
 
 `title`
 
@@ -2034,22 +2034,22 @@ Example:
 ```
 
 #### Properties
-| Name | Type | Required | Default |
-| ---- | ---- | -------- | ------- |
-| subreddit | string | yes |  |
-| style | string | no | vertical-list |
-| show-thumbnails | boolean | no | false |
-| show-flairs | boolean | no | false |
-| limit | integer | no | 15 |
-| collapse-after | integer | no | 5 |
-| comments-url-template | string | no | https://www.reddit.com/{POST-PATH} |
-| request-url-template | string | no |  |
-| proxy | string or multiple parameters | no |  |
-| sort-by | string | no | hot |
-| top-period | string | no | day |
-| search | string | no | |
-| extra-sort-by | string | no | |
-| app-auth | object | no | |
+| Name                  | Type                          | Required | Default                            |
+| --------------------- | ----------------------------- | -------- | ---------------------------------- |
+| subreddit             | string                        | yes      |                                    |
+| style                 | string                        | no       | vertical-list                      |
+| show-thumbnails       | boolean                       | no       | false                              |
+| show-flairs           | boolean                       | no       | false                              |
+| limit                 | integer                       | no       | 15                                 |
+| collapse-after        | integer                       | no       | 5                                  |
+| comments-url-template | string                        | no       | https://www.reddit.com/{POST-PATH} |
+| request-url-template  | string                        | no       |                                    |
+| proxy                 | string or multiple parameters | no       |                                    |
+| sort-by               | string                        | no       | hot                                |
+| top-period            | string                        | no       | day                                |
+| search                | string                        | no       |                                    |
+| extra-sort-by         | string                        | no       |                                    |
+| app-auth              | object                        | no       |                                    |
 
 ##### `subreddit`
 The subreddit for which to fetch the posts from.
@@ -2194,15 +2194,15 @@ Preview:
 
 #### Properties
 
-| Name | Type | Required | Default |
-| ---- | ---- | -------- | ------- |
-| repositories | array | yes |  |
-| show-source-icon | boolean | no | false |  |
-| name-only | boolean | no | false |
-| token | string | no | |
-| gitlab-token | string | no | |
-| limit | integer | no | 10 |
-| collapse-after | integer | no | 5 |
+| Name             | Type    | Required | Default |
+| ---------------- | ------- | -------- | ------- |
+| repositories     | array   | yes      |         |
+| show-source-icon | boolean | no       | false   |  |
+| name-only        | boolean | no       | false   |
+| token            | string  | no       |         |
+| gitlab-token     | string  | no       |         |
+| limit            | integer | no       | 10      |
+| collapse-after   | integer | no       | 5       |
 
 ##### `repositories`
 A list of repositores to fetch the latest release for. Only the name/repo is required, not the full URL. A prefix can be specified for repositories hosted elsewhere such as GitLab, Codeberg and Docker Hub. Example:
@@ -2300,13 +2300,13 @@ Preview:
 
 #### Properties
 
-| Name | Type | Required | Default |
-| ---- | ---- | -------- | ------- |
-| repository | string | yes |  |
-| token | string | no | |
-| pull-requests-limit | integer | no | 3 |
-| issues-limit | integer | no | 3 |
-| commits-limit | integer | no | -1 |
+| Name                | Type    | Required | Default |
+| ------------------- | ------- | -------- | ------- |
+| repository          | string  | yes      |         |
+| token               | string  | no       |         |
+| pull-requests-limit | integer | no       | 3       |
+| issues-limit        | integer | no       | 3       |
+| commits-limit       | integer | no       | -1      |
 
 ##### `repository`
 The owner and repository name that will have their information displayed.
@@ -2342,16 +2342,16 @@ Example:
 ```
 
 #### Properties
-| Name | Type | Required | Default |
-| ---- | ---- | -------- | ------- |
-| style | string | no | vertical-list |
-| feeds | array | yes |
-| thumbnail-height | float | no | 10 |
-| card-height | float | no | 27 |
-| limit | integer | no | 25 |
-| preserve-order | bool | no | false |
-| single-line-titles | boolean | no | false |
-| collapse-after | integer | no | 5 |
+| Name               | Type    | Required | Default       |
+| ------------------ | ------- | -------- | ------------- |
+| style              | string  | no       | vertical-list |
+| feeds              | array   | yes      |
+| thumbnail-height   | float   | no       | 10            |
+| card-height        | float   | no       | 27            |
+| limit              | integer | no       | 25            |
+| preserve-order     | bool    | no       | false         |
+| single-line-titles | boolean | no       | false         |
+| collapse-after     | integer | no       | 5             |
 
 ##### `limit`
 The maximum number of articles to show.
@@ -2401,15 +2401,15 @@ Used to modify the height of cards when using the `horizontal-cards-2` style. Th
 An array of RSS/atom feeds. The title can optionally be changed.
 
 ###### Properties for each feed
-| Name | Type | Required | Default | Notes |
-| ---- | ---- | -------- | ------- | ----- |
-| url | string | yes | | |
-| title | string | no | the title provided by the feed | |
-| hide-categories | boolean | no | false | Only applicable for `detailed-list` style |
-| hide-description | boolean | no | false | Only applicable for `detailed-list` style |
-| limit | integer | no | | |
-| item-link-prefix | string | no | | |
-| headers | key (string) & value (string) | no | | |
+| Name             | Type                          | Required | Default                        | Notes                                     |
+| ---------------- | ----------------------------- | -------- | ------------------------------ | ----------------------------------------- |
+| url              | string                        | yes      |                                |                                           |
+| title            | string                        | no       | the title provided by the feed |                                           |
+| hide-categories  | boolean                       | no       | false                          | Only applicable for `detailed-list` style |
+| hide-description | boolean                       | no       | false                          | Only applicable for `detailed-list` style |
+| limit            | integer                       | no       |                                |                                           |
+| item-link-prefix | string                        | no       |                                |                                           |
+| headers          | key (string) & value (string) | no       |                                |                                           |
 
 ###### `limit`
 The maximum number of articles to show from that specific feed. Useful if you have a feed which posts a lot of articles frequently and you want to prevent it from excessively pushing down articles from other feeds.
@@ -2447,42 +2447,42 @@ Preview:
 ![](images/search-widget-preview.png)
 
 #### Keyboard shortcuts
-| Keys | Action | Condition |
-| ---- | ------ | --------- |
-| <kbd>S</kbd> | Focus the search bar | Not already focused on another input field |
-| <kbd>Enter</kbd> | Perform search in the same tab | Search input is focused and not empty |
-| <kbd>Ctrl</kbd> + <kbd>Enter</kbd> | Perform search in a new tab | Search input is focused and not empty |
-| <kbd>Escape</kbd> | Leave focus / Close suggestions | Search input is focused |
-| <kbd>Up</kbd> / <kbd>Down</kbd> | Insert the last search query / Navigate suggestions | Search input is focused |
-| <kbd>↑</kbd> | Select previous suggestion | Autocomplete suggestions visible |
-| <kbd>↓</kbd> | Select next suggestion | Autocomplete suggestions visible |
+| Keys                               | Action                                              | Condition                                  |
+| ---------------------------------- | --------------------------------------------------- | ------------------------------------------ |
+| <kbd>S</kbd>                       | Focus the search bar                                | Not already focused on another input field |
+| <kbd>Enter</kbd>                   | Perform search in the same tab                      | Search input is focused and not empty      |
+| <kbd>Ctrl</kbd> + <kbd>Enter</kbd> | Perform search in a new tab                         | Search input is focused and not empty      |
+| <kbd>Escape</kbd>                  | Leave focus / Close suggestions                     | Search input is focused                    |
+| <kbd>Up</kbd> / <kbd>Down</kbd>    | Insert the last search query / Navigate suggestions | Search input is focused                    |
+| <kbd>↑</kbd>                       | Select previous suggestion                          | Autocomplete suggestions visible           |
+| <kbd>↓</kbd>                       | Select next suggestion                              | Autocomplete suggestions visible           |
 
 > [!TIP]
 >
 > You can use the property `new-tab` with a value of `true` if you want to show search results in a new tab by default. <kbd>Ctrl</kbd> + <kbd>Enter</kbd> will then show results in the same tab.
 
 #### Properties
-| Name | Type | Required | Default |
-| ---- | ---- | -------- | ------- |
-| search-engine | string | no | duckduckgo |
-| new-tab | boolean | no | false |
-| autofocus | boolean | no | false |
-| target | string | no | _blank |
-| placeholder | string | no | Type here to search… |
-| autocomplete | boolean | no | true |
-| bangs | array | no | |
+| Name          | Type    | Required | Default              |
+| ------------- | ------- | -------- | -------------------- |
+| search-engine | string  | no       | duckduckgo           |
+| new-tab       | boolean | no       | false                |
+| autofocus     | boolean | no       | false                |
+| target        | string  | no       | _blank               |
+| placeholder   | string  | no       | Type here to search… |
+| autocomplete  | boolean | no       | true                 |
+| bangs         | array   | no       |                      |
 
 ##### `search-engine`
 Either a value from the table below or a URL to a custom search engine. Use `{QUERY}` to indicate where the query value gets placed.
 
-| Name | URL |
-| ---- | --- |
-| duckduckgo | `https://duckduckgo.com/?q={QUERY}` |
-| google | `https://www.google.com/search?q={QUERY}` |
-| bing | `https://www.bing.com/search?q={QUERY}` |
+| Name       | URL                                          |
+| ---------- | -------------------------------------------- |
+| duckduckgo | `https://duckduckgo.com/?q={QUERY}`          |
+| google     | `https://www.google.com/search?q={QUERY}`    |
+| bing       | `https://www.bing.com/search?q={QUERY}`      |
 | perplexity | `https://www.perplexity.ai/search?q={QUERY}` |
-| kagi | `https://kagi.com/search?q={QUERY}` |
-| startpage | `https://www.startpage.com/search?q={QUERY}` |
+| kagi       | `https://kagi.com/search?q={QUERY}`          |
+| startpage  | `https://www.startpage.com/search?q={QUERY}` |
 
 ##### `new-tab`
 When set to `true`, swaps the shortcuts for showing results in the same or new tab, defaulting to showing results in a new tab.
@@ -2505,12 +2505,12 @@ What now? [Bangs](https://duckduckgo.com/bangs). They're shortcuts that allow yo
 ![](images/search-widget-bangs-preview.png)
 
 ##### Properties for each bang
-| Name | Type | Required |
-| ---- | ---- | -------- |
-| title | string | no |
-| shortcut | string | yes |
-| url | string | yes |
-| icon | string | no |
+| Name     | Type   | Required |
+| -------- | ------ | -------- |
+| title    | string | no       |
+| shortcut | string | yes      |
+| url      | string | yes      |
+| icon     | string | no       |
 
 ###### `title`
 Optional title that will appear on the right side of the search bar when the query starts with the associated shortcut.
@@ -2574,19 +2574,19 @@ In the event that the CPU temperature goes over 80°C, a flame icon will appear 
 ![](images/server-stats-flame-icon.png)
 
 #### Properties
-| Name | Type | Required | Default |
-| ---- | ---- | -------- | ------- |
-| servers | array | no |  |
+| Name    | Type  | Required | Default |
+| ------- | ----- | -------- | ------- |
+| servers | array | no       |         |
 
 ##### `servers`
 If not provided it will display the statistics of the server Dynacat is running on.
 
 ##### Properties for both `local` and `remote` servers
-| Name | Type | Required | Default |
-| ---- | ---- | -------- | ------- |
-| type | string | yes |  |
-| name | string | no |  |
-| hide-swap | boolean | no | false |
+| Name      | Type    | Required | Default |
+| --------- | ------- | -------- | ------- |
+| type      | string  | yes      |         |
+| name      | string  | no       |         |
+| hide-swap | boolean | no       | false   |
 
 ###### `type`
 Whether to display statistics for the local server or a remote server. Possible values are `local` and `remote`.
@@ -2598,11 +2598,11 @@ The name of the server which will be displayed on the widget. If not provided it
 Whether to hide the swap usage.
 
 ##### Properties for the `local` server
-| Name | Type | Required | Default |
-| ---- | ---- | -------- | ------- |
-| cpu-temp-sensor | string | no |  |
-| hide-mountpoints-by-default | boolean | no | false |
-| mountpoints | map\[string\]object | no |  |
+| Name                        | Type                | Required | Default |
+| --------------------------- | ------------------- | -------- | ------- |
+| cpu-temp-sensor             | string              | no       |         |
+| hide-mountpoints-by-default | boolean             | no       | false   |
+| mountpoints                 | map\[string\]object | no       |         |
 
 ###### `cpu-temp-sensor`
 The name of the sensor to use for the CPU temperature. When not provided the widget will attempt to find the correct one, if it fails to do so the temperature will not be displayed. To view the available sensors you can use `sensors` command.
@@ -2638,10 +2638,10 @@ mountpoints:
 ```
 
 ##### Properties for each `mountpoint`
-| Name | Type | Required | Default |
-| ---- | ---- | -------- | ------- |
-| name | string | no |  |
-| hide | boolean | no | false |
+| Name | Type    | Required | Default |
+| ---- | ------- | -------- | ------- |
+| name | string  | no       |         |
+| hide | boolean | no       | false   |
 
 ###### `name`
 The name of the mountpoint which will be displayed on the widget. If not provided it will default to the mountpoint's path.
@@ -2650,11 +2650,11 @@ The name of the mountpoint which will be displayed on the widget. If not provide
 Whether to hide this mountpoint from the widget.
 
 ##### Properties for `remote` servers
-| Name | Type | Required | Default |
-| ---- | ---- | -------- | ------- |
-| url | string | yes |  |
-| token | string | no |  |
-| timeout | string | no | 3s |
+| Name    | Type   | Required | Default |
+| ------- | ------ | -------- | ------- |
+| url     | string | yes      |         |
+| token   | string | no       |         |
+| timeout | string | no       | 3s      |
 
 ###### `url`
 The URL and port of the server to fetch the statistics from.
@@ -2811,7 +2811,7 @@ Just like the `group` widget, you can insert any widget type, you can even inser
 
 ### Stopwatch
 
-A browser-based stopwatch widget. 
+A browser-based stopwatch widget.
 
 Example:
 
@@ -2825,9 +2825,9 @@ Preview:
 
 #### Properties
 
-| Name | Type | Required | Default |
-| ---- | ---- | -------- | ------- |
-| start-on-open | boolean | no | false |
+| Name          | Type    | Required | Default |
+| ------------- | ------- | -------- | ------- |
+| start-on-open | boolean | no       | false   |
 
 ##### `start-on-open`
 
@@ -2855,11 +2855,11 @@ To delete a task, hover over it and click on the trash icon.
 
 #### Properties
 
-| Name | Type | Required | Default |
-| ---- | ---- | -------- | ------- |
-| id | string | no | |
-| storage | string | no | local |
-| collapse-after | integer | no | |
+| Name           | Type    | Required | Default |
+| -------------- | ------- | -------- | ------- |
+| id             | string  | no       |         |
+| storage        | string  | no       | local   |
+| collapse-after | integer | no       |         |
 
 ##### `id`
 
@@ -2893,12 +2893,36 @@ pages:
 ```
 
 #### Keyboard shortcuts
-| Keys | Action | Condition |
-| ---- | ------ | --------- |
-| <kbd>Enter</kbd> | Add a task to the bottom of the list | When the "Add a task" field is focused |
-| <kbd>Ctrl</kbd> + <kbd>Enter</kbd> | Add a task to the top of the list | When the "Add a task" field is focused |
-| <kbd>Down Arrow</kbd> | Focus the last task that was added | When the "Add a task" field is focused |
-| <kbd>Escape</kbd> | Focus the "Add a task" field | When a task is focused |
+| Keys                               | Action                               | Condition                              |
+| ---------------------------------- | ------------------------------------ | -------------------------------------- |
+| <kbd>Enter</kbd>                   | Add a task to the bottom of the list | When the "Add a task" field is focused |
+| <kbd>Ctrl</kbd> + <kbd>Enter</kbd> | Add a task to the top of the list    | When the "Add a task" field is focused |
+| <kbd>Down Arrow</kbd>              | Focus the last task that was added   | When the "Add a task" field is focused |
+| <kbd>Escape</kbd>                  | Focus the "Add a task" field         | When a task is focused                 |
+
+### TickTick
+
+Display open TickTick tasks.
+
+#### Getting access token and config
+
+<div data-ticktick-config-helper></div>
+
+#### Properties
+
+| Name           | Type   | Required | Default | Notes                                             |
+| -------------- | ------ | -------- | ------- | ------------------------------------------------- |
+| access-token   | string | yes      |         |                                                   |
+| add-project-id | string | no       |         | Controls where new tasks are created              |
+| show           | string | no       | `today` | Chooses the date/view filter: `today` or `inbox`. |
+
+Notes:
+
+- `Today` uses the timezone TickTick returns on dated tasks. Do not forget to login into TickTick if you changed timezone!
+- Widget data is cached for 5 minutes by default, so TickTick changes may not appear instantly in widget.
+- This widget intentionally kept very simple, hides a lot of setup/usage complexity and will never mirror all TickTick functionality.
+- TickTick is PAINFULLY slow and thats not an exaggeration, their services and this widget use a lot of hacks (i.e. optimistic updates and queues) for nicer UX.
+- TickTick API and widget are subjects to change. For example, in theory TickTick tokens may expire and they do not clearly document refresh tokens now.
 
 ### Twitch Channels
 Display a list of channels from Twitch.
@@ -2921,11 +2945,11 @@ Preview:
 ![](images/twitch-channels-widget-preview.png)
 
 #### Properties
-| Name | Type | Required | Default |
-| ---- | ---- | -------- | ------- |
-| channels | array | yes | |
-| collapse-after | integer | no | 5 |
-| sort-by | string | no | viewers |
+| Name           | Type    | Required | Default |
+| -------------- | ------- | -------- | ------- |
+| channels       | array   | yes      |         |
+| collapse-after | integer | no       | 5       |
+| sort-by        | string  | no       | viewers |
 
 ##### `channels`
 A list of channels to display.
@@ -2956,11 +2980,11 @@ Preview:
 ![](images/twitch-top-games-widget-preview.png)
 
 #### Properties
-| Name | Type | Required | Default |
-| ---- | ---- | -------- | ------- |
-| exclude | array | no | |
-| limit | integer | no | 10 |
-| collapse-after | integer | no | 5 |
+| Name           | Type    | Required | Default |
+| -------------- | ------- | -------- | ------- |
+| exclude        | array   | no       |         |
+| limit          | integer | no       | 10      |
+| collapse-after | integer | no       | 5       |
 
 ##### `exclude`
 A list of categories that will never be shown. You must provide the slug found by clicking on the category and looking at the URL:
@@ -2993,16 +3017,16 @@ Preview:
 ![](images/videos-widget-preview.png)
 
 #### Properties
-| Name | Type | Required | Default |
-| ---- | ---- | -------- | ------- |
-| channels | array | yes | |
-| playlists | array | no | |
-| limit | integer | no | 25 |
-| style | string | no | horizontal-cards |
-| collapse-after | integer | no | 7 |
-| collapse-after-rows | integer | no | 4 |
-| include-shorts | boolean | no | false |
-| video-url-template | string | no | https://www.youtube.com/watch?v={VIDEO-ID} |
+| Name                | Type    | Required | Default                                    |
+| ------------------- | ------- | -------- | ------------------------------------------ |
+| channels            | array   | yes      |                                            |
+| playlists           | array   | no       |                                            |
+| limit               | integer | no       | 25                                         |
+| style               | string  | no       | horizontal-cards                           |
+| collapse-after      | integer | no       | 7                                          |
+| collapse-after-rows | integer | no       | 4                                          |
+| include-shorts      | boolean | no       | false                                      |
+| video-url-template  | string  | no       | https://www.youtube.com/watch?v={VIDEO-ID} |
 
 ##### `channels`
 A list of channels IDs.
@@ -3094,13 +3118,13 @@ Each bar represents a 2 hour interval. The yellow background represents sunrise 
 
 #### Properties
 
-| Name | Type | Required | Default |
-| ---- | ---- | -------- | ------- |
-| location | string | yes |  |
-| units | string | no | metric |
-| hour-format | string | no | 12h |
-| hide-location | boolean | no | false |
-| show-area-name | boolean | no | false |
+| Name           | Type    | Required | Default |
+| -------------- | ------- | -------- | ------- |
+| location       | string  | yes      |         |
+| units          | string  | no       | metric  |
+| hour-format    | string  | no       | 12h     |
+| hide-location  | boolean | no       | false   |
+| show-area-name | boolean | no       | false   |
 
 ##### `location`
 The name of the city and country to fetch weather information for. Attempting to launch the applcation with an invalid location will result in an error. You can use the [gecoding API page](https://open-meteo.com/en/docs/geocoding-api) to search for your specific location. Dynacat will use the first result from the list if there are multiple.
@@ -3154,17 +3178,17 @@ Preview:
 ![](images/currently-playing-preview.png)
 
 #### Properties
-| Name | Type | Required | Default |
-| ---- | ---- | -------- | ------- |
-| hosts | array | yes | |
-| play-state | string | no | indicator |
-| show-thumbnail | boolean | no | true |
-| show-paused | boolean | no | false |
-| show-progress-bar | boolean | no | true |
-| show-progress-info | boolean | no | true |
-| group-by-host | boolean | no | false |
-| update-interval | string | no | 30s |
-| episode-title-format | string | no | series |
+| Name                 | Type    | Required | Default   |
+| -------------------- | ------- | -------- | --------- |
+| hosts                | array   | yes      |           |
+| play-state           | string  | no       | indicator |
+| show-thumbnail       | boolean | no       | true      |
+| show-paused          | boolean | no       | false     |
+| show-progress-bar    | boolean | no       | true      |
+| show-progress-info   | boolean | no       | true      |
+| group-by-host        | boolean | no       | false     |
+| update-interval      | string  | no       | 30s       |
+| episode-title-format | string  | no       | series    |
 
 ##### `hosts`
 
@@ -3178,11 +3202,11 @@ An array of media server hosts to check for active sessions.
 
 Properties for each host:
 
-| Name | Type | Required | Notes |
-| ---- | ---- | -------- | ----- |
-| url | string | yes | Must include server type prefix |
-| username | string | for Navidrome | Subsonic username (Navidrome only) |
-| token | string | yes | API key/token, or password for Navidrome Subsonic auth |
+| Name     | Type   | Required      | Notes                                                  |
+| -------- | ------ | ------------- | ------------------------------------------------------ |
+| url      | string | yes           | Must include server type prefix                        |
+| username | string | for Navidrome | Subsonic username (Navidrome only)                     |
+| token    | string | yes           | API key/token, or password for Navidrome Subsonic auth |
 
 Example:
 ```yaml
@@ -3274,14 +3298,14 @@ Preview:
 
 #### Properties
 
-| Name | Type | Required | Default |
-| ---- | ---- | -------- | ------- |
-| hosts | array | yes | |
-| item-count | integer | no | 12 |
-| columns | integer | no | 4 |
-| small-column | boolean | no | false |
-| show-overlay | boolean | no | true |
-| update-interval | string | no | 30m |
+| Name            | Type    | Required | Default |
+| --------------- | ------- | -------- | ------- |
+| hosts           | array   | yes      |         |
+| item-count      | integer | no       | 12      |
+| columns         | integer | no       | 4       |
+| small-column    | boolean | no       | false   |
+| show-overlay    | boolean | no       | true    |
+| update-interval | string  | no       | 30m     |
 
 ##### `hosts`
 
@@ -3294,13 +3318,13 @@ An array of media server hosts to fetch recently added items from. Results from 
 
 Properties for each host:
 
-| Name | Type | Required | Default | Notes |
-| ---- | ---- | -------- | ------- | ----- |
-| url | string | yes | | Must include server type prefix |
-| token | string | yes | | API key or token for authentication |
-| public-url | string | no | same as `url` | Public-facing base URL used for item links (clicks); useful when the internal fetch URL differs from what users should open in their browser |
-| allow-insecure | boolean | no | false | Ignore invalid/self-signed certificates |
-| libraries | array of strings | no | | Filter to specific library names; omit to fetch from all libraries |
+| Name           | Type             | Required | Default       | Notes                                                                                                                                        |
+| -------------- | ---------------- | -------- | ------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| url            | string           | yes      |               | Must include server type prefix                                                                                                              |
+| token          | string           | yes      |               | API key or token for authentication                                                                                                          |
+| public-url     | string           | no       | same as `url` | Public-facing base URL used for item links (clicks); useful when the internal fetch URL differs from what users should open in their browser |
+| allow-insecure | boolean          | no       | false         | Ignore invalid/self-signed certificates                                                                                                      |
+| libraries      | array of strings | no       |               | Filter to specific library names; omit to fetch from all libraries                                                                           |
 
 Example with library filtering:
 
@@ -3380,15 +3404,15 @@ Preview:
 ![](images/torrenting-preview.png)
 
 #### Properties
-| Name | Type | Required | Default |
-| ---- | ---- | -------- | ------- |
-| hosts | array | yes | |
-| hide-completed | boolean | no | false |
-| hide-inactive | boolean | no | false |
-| hide-bar | boolean | no | false |
-| wrap-text | boolean | no | false |
-| collapse-after | number | no | 3 |
-| update-interval | string | no | 30s |
+| Name            | Type    | Required | Default |
+| --------------- | ------- | -------- | ------- |
+| hosts           | array   | yes      |         |
+| hide-completed  | boolean | no       | false   |
+| hide-inactive   | boolean | no       | false   |
+| hide-bar        | boolean | no       | false   |
+| wrap-text       | boolean | no       | false   |
+| collapse-after  | number  | no       | 3       |
+| update-interval | string  | no       | 30s     |
 
 ##### `hosts`
 
@@ -3396,12 +3420,12 @@ An array of torrent client instances to connect to. Supports qBittorrent, Deluge
 
 Properties for each host:
 
-| Name | Type | Required |
-| ---- | ---- | -------- |
-| url | string | yes |
-| client | string | no |
+| Name     | Type   | Required            |
+| -------- | ------ | ------------------- |
+| url      | string | yes                 |
+| client   | string | no                  |
 | username | string | yes (except Deluge) |
-| password | string | yes |
+| password | string | yes                 |
 
 ###### `client`
 The torrent client type. Supported values: `qbittorrent` (default), `deluge`, `transmission`.

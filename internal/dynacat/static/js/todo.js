@@ -1,10 +1,8 @@
 import { elem, fragment } from "./templating.js";
 import { animateReposition } from "./animations.js";
 import { clamp, Vec2, toggleableEvents, throttledDebounce } from "./utils.js";
+import { widgetSyncKey } from "./widget-sync.js";
 
-const trashIconSvg = `<svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-  <path fill-rule="evenodd" d="M5 3.25V4H2.75a.75.75 0 0 0 0 1.5h.3l.815 8.15A1.5 1.5 0 0 0 5.357 15h5.285a1.5 1.5 0 0 0 1.493-1.35l.815-8.15h.3a.75.75 0 0 0 0-1.5H11v-.75A2.25 2.25 0 0 0 8.75 1h-1.5A2.25 2.25 0 0 0 5 3.25Zm2.25-.75a.75.75 0 0 0-.75.75V4h3v-.75a.75.75 0 0 0-.75-.75h-1.5ZM6.05 6a.75.75 0 0 1 .787.713l.275 5.5a.75.75 0 0 1-1.498.075l-.275-5.5A.75.75 0 0 1 6.05 6Zm3.9 0a.75.75 0 0 1 .712.787l-.275 5.5a.75.75 0 0 1-1.498-.075l.275-5.5a.75.75 0 0 1 .786-.711Z" clip-rule="evenodd" />
-</svg>`;
 const dragIconSvg = `<svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
   <path d="M6.5 3.25a1.25 1.25 0 1 1-2.5 0 1.25 1.25 0 0 1 2.5 0ZM6.5 8a1.25 1.25 0 1 1-2.5 0 1.25 1.25 0 0 1 2.5 0ZM5.25 14.75a1.25 1.25 0 1 0 0-2.5 1.25 1.25 0 0 0 0 2.5ZM12 3.25a1.25 1.25 0 1 1-2.5 0 1.25 1.25 0 0 1 2.5 0ZM10.75 9.25a1.25 1.25 0 1 0 0-2.5 1.25 1.25 0 0 0 0 2.5ZM12 13.5a1.25 1.25 0 1 1-2.5 0 1.25 1.25 0 0 1 2.5 0Z"/>
 </svg>`;
@@ -16,7 +14,7 @@ export default function(element) {
             element.dataset.todoId,
             element.dataset.todoStorage,
             element.dataset.todoCollapseAfter,
-            widget ? widget.dataset.widgetFrontendSyncKey : ""
+            widget ? widgetSyncKey(widget) : ""
         )
     )
 }
@@ -121,7 +119,6 @@ function Item(unserialize = {}, onTextUpdate, onCheckUpdate, onDelete, onEscape,
                 type: "button",
                 "aria-label": "Delete task"
             })
-            .html(trashIconSvg)
             .on("click", () => onDelete(item))
     );
 

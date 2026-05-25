@@ -1,3 +1,5 @@
+import { escapeHtml, widgetActionURL } from './utils.js';
+
 (function () {
     const base = (typeof pageData !== 'undefined' && pageData.baseURL) || '';
 
@@ -7,14 +9,6 @@
     const widgetObservers = new Map();
     // confirmingItems: "widgetId:type:id" -> {origHTML, origTitle, timeoutId}
     const confirmingItems = new Map();
-
-    function escapeHtml(str) {
-        return String(str)
-            .replace(/&/g, '&amp;')
-            .replace(/</g, '&lt;')
-            .replace(/>/g, '&gt;')
-            .replace(/"/g, '&quot;');
-    }
 
     // Find the images <ul> list inside a widget (the section that has the pull input)
     function getImagesListForWidget(widgetId) {
@@ -190,7 +184,7 @@
         btn.disabled = true;
         try {
             const resp = await fetch(
-                base + '/api/widgets/' + widgetId + '/action/containers/' + id + '/' + action,
+                widgetActionURL(base, widgetId, 'containers', id, action),
                 { method: 'POST' }
             );
             if (!resp.ok) {
@@ -268,10 +262,10 @@
             clearTimeout(state.timeoutId);
             confirmingItems.delete(key);
             btn.disabled = true;
-            const actionPath = type === 'containers'
-                ? 'containers/' + id + '/remove'
-                : 'images/' + id + '/remove';
-            fetch(base + '/api/widgets/' + widgetId + '/action/' + actionPath, { method: 'POST' })
+            const actionURL = type === 'containers'
+                ? widgetActionURL(base, widgetId, 'containers', id, 'remove')
+                : widgetActionURL(base, widgetId, 'images', id, 'remove');
+            fetch(actionURL, { method: 'POST' })
                 .then(function (resp) {
                     if (!resp.ok) {
                         clearConfirmVisual(btn, state.origHTML, state.origTitle);
@@ -307,7 +301,7 @@
 
     async function pollPullStatus(widgetId, pullId) {
         try {
-            const resp = await fetch(base + '/api/widgets/' + widgetId + '/action/images/pull/' + pullId + '/status');
+            const resp = await fetch(widgetActionURL(base, widgetId, 'images', 'pull', pullId, 'status'));
             if (resp.status === 404) { removePullEntry(widgetId, pullId); return; }
             if (!resp.ok) { setTimeout(function () { pollPullStatus(widgetId, pullId); }, 2000); return; }
             const data = await resp.json();
@@ -358,7 +352,7 @@
         input.value = '';
 
         try {
-            const resp = await fetch(base + '/api/widgets/' + widgetId + '/action/images/pull', {
+            const resp = await fetch(widgetActionURL(base, widgetId, 'images', 'pull'), {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ image: image }),

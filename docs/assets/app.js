@@ -141,6 +141,13 @@ function parseCurrentRoute(pathname = location.pathname, hash = location.hash) {
   const parsedFromHash = parseHashRoute(hash);
   if (parsedFromHash) return parsedFromHash;
 
+  if (pathname === location.pathname && hash === location.hash) {
+    const params = new URLSearchParams(location.search);
+    if (params.get('state') === 'dynacat-ticktick' && (params.has('code') || params.has('error'))) {
+      return { pageId: 'configuration', hash: 'ticktick' };
+    }
+  }
+
   const pageFromPath = parsePageFromPathname(pathname);
   const rawHash = String(hash || '').replace(/^#/, '').trim();
 
@@ -1121,6 +1128,12 @@ function handleContentLinks(container) {
   });
 }
 
+function emitDocRendered(wrapper, pageId) {
+  document.dispatchEvent(new CustomEvent('dynacat:doc-rendered', {
+    detail: { pageId, wrapper },
+  }));
+}
+
 /* ─── Floating Table of Contents ─────────────────────────────────────────── */
 
 let tocObserver = null;
@@ -1342,6 +1355,7 @@ async function renderDoc(pageId, hash, requestId) {
   destroyToc();
   contentEl.innerHTML = '';
   contentEl.appendChild(wrapper);
+  emitDocRendered(wrapper, pageId);
   buildFloatingToc(wrapper);
   wrapTables(wrapper);
 
@@ -2070,4 +2084,3 @@ loadManifest().then(() => {
   const { pageId: initPage, hash: initHash } = parseLocationHash();
   navigateTo(initPage, initHash, true);
 });
-

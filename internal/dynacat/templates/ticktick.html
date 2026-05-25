@@ -1,0 +1,47 @@
+{{ template "widget-base.html" . }}
+
+{{ define "widget-content-classes" }}{{ if .Frameless }}widget-content-frameless{{ end }}{{ end }}
+
+{{ define "widget-content" }}
+<div class="ticktick">
+    <form class="ticktick-add" data-ticktick-add>
+        <input type="text" name="title" placeholder="Add task" autocomplete="off">
+    </form>
+    {{ if .Tasks }}
+    <ul class="ticktick-list">
+        {{ range .Tasks }}
+        {{ $task := . }}
+        <li class="ticktick-task{{ if .ParentID }} ticktick-task-child{{ end }}">
+            <div class="ticktick-task-row">
+                <button type="button" class="ticktick-check" aria-label="Complete {{ .Title }}" data-ticktick-action="complete" data-project-id="{{ .ProjectID }}" data-task-id="{{ .ID }}"></button>
+                <div class="ticktick-task-body"{{ if $.ShouldShowTaskPopover . }} data-popover-type="html" data-popover-position="above" data-popover-max-width="360px"{{ end }}>
+                    <input class="ticktick-title" data-ticktick-title data-project-id="{{ .ProjectID }}" data-task-id="{{ .ID }}" value="{{ .Title }}" aria-label="Task title" spellcheck="false">
+                    {{ if $.ShouldShowTaskPopover . }}
+                    <div data-popover-html>
+                        {{ if .Content }}<div class="ticktick-popover-text">{{ .Content }}</div>{{ end }}
+                        {{ if .Desc }}<div class="ticktick-popover-text">{{ .Desc }}</div>{{ end }}
+                        {{ if .Items }}
+                        <ul class="ticktick-popover-subtasks">
+                            {{ range .Items }}
+                            <li class="ticktick-popover-subtask{{ if ne .Status 0 }} ticktick-popover-subtask-done{{ end }}">
+                                {{ if and (eq .Status 0) .ID }}
+                                <button type="button" class="ticktick-check ticktick-subtask-check" aria-label="Complete {{ .Title }}" data-ticktick-action="complete-item" data-widget-id="{{ $.GetID }}" data-project-id="{{ $task.ProjectID }}" data-task-id="{{ $task.ID }}" data-item-id="{{ .ID }}"></button>
+                                {{ end }}
+                                <span class="ticktick-popover-subtask-title">{{ .Title }}</span>
+                            </li>
+                            {{ end }}
+                        </ul>
+                        {{ end }}
+                    </div>
+                    {{ end }}
+                </div>
+                <button type="button" class="ticktick-delete" aria-label="Delete {{ .Title }}" data-ticktick-action="delete" data-project-id="{{ .ProjectID }}" data-task-id="{{ .ID }}"></button>
+            </div>
+        </li>
+        {{ end }}
+    </ul>
+    {{ else }}
+    <div class="ticktick-empty">{{ .EmptyMessage }}</div>
+    {{ end }}
+</div>
+{{ end }}

@@ -784,6 +784,9 @@ func (a *application) handleWidgetActionRequest(w http.ResponseWriter, r *http.R
 		return
 	}
 
+	page.mu.Lock()
+	defer page.mu.Unlock()
+
 	widget.handleRequest(w, r)
 }
 
