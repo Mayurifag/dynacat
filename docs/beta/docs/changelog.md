@@ -1,5 +1,16 @@
 # Changes for 2.X.X
-- Added support for loading environment variables from a file via `--env-file`.
+- Added Brave Search as an autocompletion engine and normal one
+- Added support for icons in the page title 
+- Fixed issue where todo widget highlight was too short
+- Fixed issue where in todo widget trash animation icon was slower than highlight
+- Added speedtest widget
+
+# Changes for 2.3.1
+- Added support for loading environment variables from a file via `--env-file`
+- Made initial loading faster by fetching data on service start
+- Fixed an issue where `glance.yml` was not detected correctly which would cause issues when transitioning
+- Fixed Reddit widget and Reddit RSS feeds returning `403` by mimicking a browser TLS handshake and solving the JS challenge for the `loid` cookie
+- Bumped up Go packages to latest
 
 # Changes for 2.3.0
 - Removed photos from latest-media widget

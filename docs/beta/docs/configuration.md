@@ -66,7 +66,7 @@ Alternatively, you can load the contents of a file who's path is provided by an 
 ```yaml
 services:
   dynacat:
-    image: Panonim/dynacat
+    image: panonim/dynacat
     environment:
       - TOKEN_FILE=/home/user/token
     volumes:
@@ -178,7 +178,7 @@ icon: auto-invert sh:dynacat-dark # with a selfh.st icon
 
 This expects the icon to be black and will automatically invert it to white when using a dark theme.
 
-The same icon syntax and prefixes also work for `title-icon`.
+The same icon syntax and prefixes also work for `title-icon` as well as the page `name-icon` (see [Pages](#pages)), which places an icon to the left of the page name in the navigation bar.
 
 If an icon URL cannot be loaded (for example, the file does not exist or the host is unreachable), Dynacat will hide the icon and render the widget as if no icon was configured.
 
@@ -497,6 +497,7 @@ pages:
 | Name | Type | Required | Default |
 | ---- | ---- | -------- | ------- |
 | name | string | yes | |
+| name-icon | string | no | |
 | slug | string | no | |
 | dynamic-updates | boolean | no | true |
 | width | string | no | |
@@ -511,6 +512,17 @@ pages:
 
 #### `name`
 The name of the page which gets shown in the navigation bar.
+
+#### `name-icon`
+An icon shown to the left of the page name in the navigation bar (both desktop and mobile). It uses the same syntax and prefixes as every other icon, see [Icons](#icons) for more information. Example:
+
+```yaml
+pages:
+  - name: "News"
+    slug: news
+    name-icon: mdi:newspaper-variant-outline
+    columns: ...
+```
 
 #### `slug`
 The URL friendly version of the title which is used to access the page. For example if the title of the page is "RSS Feeds" you can make the page accessible via `localhost:8080/feeds` by setting the slug to `feeds`. If not defined, it will automatically be generated from the title.
@@ -1360,7 +1372,7 @@ Display the status of your Docker containers along with an icon and an optional 
 > ```yaml
 > services:
 >   dynacat:
->     image: Panonim/dynacat
+>     image: panonim/dynacat
 >     volumes:
 >       - /var/run/docker.sock:/var/run/docker.sock
 > ```
@@ -1541,7 +1553,7 @@ Example:
 > ```yaml
 > services:
 >   dynacat:
->     image: Panonim/dynacat
+>     image: panonim/dynacat
 >     volumes:
 >       - /var/run/docker.sock:/var/run/docker.sock
 > ```
@@ -2257,7 +2269,7 @@ You can also specify the value for this token through an ENV variable using the 
 ```yaml
 services:
   dynacat:
-    image: Panonim/dynacat
+    image: panonim/dynacat
     environment:
       - GITHUB_TOKEN=<your token>
 ```
@@ -2470,6 +2482,7 @@ Preview:
 | target | string | no | _blank |
 | placeholder | string | no | Type here to search… |
 | autocomplete | boolean | no | true |
+| autocomplete-provider | string | no | duckduckgo |
 | bangs | array | no | |
 
 ##### `search-engine`
@@ -2483,6 +2496,7 @@ Either a value from the table below or a URL to a custom search engine. Use `{QU
 | perplexity | `https://www.perplexity.ai/search?q={QUERY}` |
 | kagi | `https://kagi.com/search?q={QUERY}` |
 | startpage | `https://www.startpage.com/search?q={QUERY}` |
+| qwant | `https://www.qwant.com/?q={QUERY}&t=web` |
 
 ##### `new-tab`
 When set to `true`, swaps the shortcuts for showing results in the same or new tab, defaulting to showing results in a new tab.
@@ -2498,6 +2512,14 @@ When set, modifies the text displayed in the input field before typing.
 
 ##### `autocomplete`
 When set to `true` (default), displays search suggestions as you type. Navigate suggestions with <kbd>↑</kbd> and <kbd>↓</kbd> arrow keys, select with <kbd>Enter</kbd>, or dismiss with <kbd>Escape</kbd>. Set to `false` to disable autocompletion.
+
+##### `autocomplete-provider`
+The provider used for search suggestions. Possible values are `duckduckgo` (default) and `brave`.
+
+| Value | Provider |
+| ----- | -------- |
+| duckduckgo | DuckDuckGo autocomplete |
+| brave | Brave Search autocomplete |
 
 ##### `bangs`
 What now? [Bangs](https://duckduckgo.com/bangs). They're shortcuts that allow you to use the same search box for many different sites. Assuming you have it configured, if for example you start your search input with `!yt` you'd be able to perform a search on YouTube:
@@ -2665,6 +2687,57 @@ The authentication token to use when fetching the statistics.
 ###### `timeout`
 The maximum time to wait for a response from the server. The value is a string and must be a number followed by one of s, m, h, d. Example: `10s` for 10 seconds, `1m` for 1 minute, etc
 
+### Speedtest
+Run a real internet speed test from the server and display the download, upload and ping. The test uses the [LibreSpeed](https://github.com/librespeed/speedtest-cli) protocol and, by default, automatically picks the nearest public LibreSpeed server. You can also point it at your own LibreSpeed instance.
+
+Preview:
+
+![](images/speedtest-widget-preview.png)
+
+Example:
+
+```yaml
+- type: speedtest
+```
+
+Using your own LibreSpeed server:
+
+```yaml
+- type: speedtest
+  server: https://librespeed.mydomain.com
+  update-interval: 6h
+```
+
+> [!CAUTION]
+>
+> This widget is still being tested, also note that:
+> When no `server` is configured the widget fetches the public LibreSpeed server list and runs the test against a community hosted server. Be considerate with how frequently you run tests against public servers.
+
+#### Properties
+
+| Name | Type | Required | Default |
+| ---- | ---- | -------- | ------- |
+| server | string | no |  |
+| duration | string | no | 15s |
+| concurrent | integer | no | 3 |
+| update-interval | string | no | 6h |
+| frameless | boolean | no | false |
+
+##### `server`
+The base URL of a LibreSpeed server to test against, for example `https://librespeed.mydomain.com`. When left empty, the widget automatically selects the lowest latency server from the public LibreSpeed server list.
+
+##### `duration`
+How long each direction (download and upload) is measured for. The value is a string and must be a number followed by one of s, m, h, d. Example: `15s` for 15 seconds.
+
+##### `concurrent`
+The number of concurrent connections used during the download and upload tests.
+
+##### `update-interval`
+How often a test is automatically run. The value is a string and must be a number followed by one of s, m or h. Default is `6h`.
+
+##### `frameless`
+When set to `true`, removes the border and padding around the widget.
+
 ### Split Column
 Splits a full sized column in half, allowing you to place widgets side by side horizontally. This is converted to a single column on mobile devices or if not enough width is available. Widgets are defined using a `widgets` property exactly as you would on a page column.
 
@@ -2811,7 +2884,7 @@ Just like the `group` widget, you can insert any widget type, you can even inser
 
 ### Stopwatch
 
-A browser-based stopwatch widget. 
+A browser-based stopwatch widget.
 
 Example:
 
